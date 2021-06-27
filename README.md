@@ -1,6 +1,6 @@
 # CppND-System-Monitor
 
-This is a program that monitors system usage (including CPU, memory, and RAM) and shows a list of processes running on the PC (like Htop). This project is a part of the Object Oriented Programming Course of the Udacity C++ Nanodegree Program.
+This is a program that monitors system usage (CPU and memory) and shows a list of processes running on the PC (like Htop). This project is a part of the Object Oriented Programming Course of the Udacity C++ Nanodegree Program.
 
 ![System Monitor](images/result_monitor.PNG)
 
