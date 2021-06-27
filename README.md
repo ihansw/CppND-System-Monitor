@@ -1,8 +1,8 @@
 # CppND-System-Monitor
 
-This is the code for my System Monitor Project in the Object Oriented Programming Course of the Udacity C++ Nanodegree Program.
+This is a program that monitors system usage (including CPU, memory, and RAM) and shows a list of processes running on the PC (like Htop). This project is a part of the Object Oriented Programming Course of the Udacity C++ Nanodegree Program.
 
-![System Monitor](images/result_monitor.png)
+![System Monitor](images/result_monitor.PNG)
 
 ## Udacity Linux Workspace
 [Udacity](https://www.udacity.com/) provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. 
