@@ -28,16 +28,14 @@ vector<Process>& System::Processes() {
   
   // extract current processes
   vector<int> pid_list = LinuxParser::Pids();
+  // int pid_list_size = pid_list.size();
   
-  for(int i = 0; i < pid_list.size() ; i++){
+  for(int i = 0; i < (int) pid_list.size() ; i++){
   	Process new_process(pid_list[i]);
     processes_.push_back(new_process); 
-//     std::cout << "new_process.Command(): " << new_process.Command() << std::endl;
   }
   
-  // TODO: Sort the list.
-//   std::sort(processes_.begin(), processes_.end());
-  
+  // Sort the list.
   struct greater{
 	bool operator() (Process& a, Process& b) { return (a.CpuUtilization() > b.CpuUtilization()); }
   };
