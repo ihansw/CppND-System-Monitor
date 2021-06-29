@@ -36,19 +36,23 @@ float Process::CalcCpuUtilization(int pid) {
   cpu_util_vector_ = LinuxParser::CpuUtilization(pid);
   
   long hertz = sysconf(_SC_CLK_TCK);
-  long uptime = stol(cpu_util_vector_[0]);
-  long utime = stol(cpu_util_vector_[1]);
-  long stime = stol(cpu_util_vector_[2]);
-  long cutime = stol(cpu_util_vector_[3]);
-  long cstime = stol(cpu_util_vector_[4]);
-  long starttime = stol(cpu_util_vector_[5]);
-  
-  long total_cpu_time_jiffies = utime + stime + cutime + cstime;
-  float total_cpu_time_seconds = total_cpu_time_jiffies / hertz;
-  float total_run_time_seconds = uptime - (starttime / hertz);
-  float cpu_usage = (total_cpu_time_seconds / total_run_time_seconds);
-//   std::cout << "total_run_time_sec: " << total_run_time_seconds << ", total_cpu_time_sec: " << (total_cpu_time_jiffies / hertz) << std::endl;
-//   std::cout << "cpu_usage: " << cpu_usage << std::endl;
+  float cpu_usage;
+  try {
+    long uptime = stol(cpu_util_vector_[0]);
+    long utime = stol(cpu_util_vector_[1]);
+    long stime = stol(cpu_util_vector_[2]);
+    long cutime = stol(cpu_util_vector_[3]);
+    long cstime = stol(cpu_util_vector_[4]);
+    long starttime = stol(cpu_util_vector_[5]);
+    
+    long total_cpu_time_jiffies = utime + stime + cutime + cstime;
+    float total_cpu_time_seconds = total_cpu_time_jiffies / hertz;
+    float total_run_time_seconds = uptime - (starttime / hertz);
+    cpu_usage = (total_cpu_time_seconds / total_run_time_seconds);
+  } catch(...){
+    cpu_usage = 0;
+  }
+
   return cpu_usage;
 }
 // TODO: (DONE) Return the command that generated this process

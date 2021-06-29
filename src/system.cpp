@@ -28,9 +28,9 @@ vector<Process>& System::Processes() {
   
   // extract current processes
   vector<int> pid_list = LinuxParser::Pids();
-  // int pid_list_size = pid_list.size();
+  int pid_list_size = pid_list.size();
   
-  for(int i = 0; i < (int) pid_list.size() ; i++){
+  for(int i = 0; i < pid_list_size ; i++){
   	Process new_process(pid_list[i]);
     processes_.push_back(new_process); 
   }
