@@ -241,7 +241,7 @@ string LinuxParser::Ram(int pid) {
           float ram_kb = stof(value);
           float ram_mb = ram_kb / 1024;
           std::stringstream stream;
-          stream << std::fixed << std::setprecision(2) << ram_mb;
+          stream << std::fixed << std::setprecision(1) << ram_mb;
 
           filestream.close();
           return stream.str();
