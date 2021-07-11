@@ -265,8 +265,6 @@ string LinuxParser::Uid(int pid) {
       std::istringstream linestream(line);
       while (linestream >> key >> value) {
         if (key == "Uid:") {
-//           std::cout << "uid: " << value << std::endl;
-
           filestream.close();
           return value;
         }
@@ -289,9 +287,7 @@ string LinuxParser::User(int pid) {
       std::replace(line.begin(), line.end(), ':', ' ');
       std::istringstream linestream(line);
       while (linestream >> key >> x >> value) {
-//         std::cout << "key: " << key << std::endl;
         if (value == LinuxParser::Uid(pid)) {
-//           std::cout << "key: " << key << std::endl;
           filestream.close();
           return key;
         }
@@ -305,17 +301,7 @@ string LinuxParser::User(int pid) {
 // TODO: Read and return the uptime of a process
 // REMOVE: [[maybe_unused]] once you define the function
 long LinuxParser::UpTime(int pid) { 
-//  // Get uptime
-//   string line;
-//   long uptime;
-//   std::ifstream filestream_uptime(kProcDirectory + kUptimeFilename);
-//   if (filestream_uptime.is_open()) {
-//     std::getline(filestream_uptime, line);
-//     std::istringstream linestream(line);
-//     linestream >> uptime;
-//   }
-//   return uptime;
-  
+
   string line, value;
   long hertz = sysconf(_SC_CLK_TCK);
   // Read file (/proc/stat)
@@ -329,7 +315,8 @@ long LinuxParser::UpTime(int pid) {
         i++;
         if (i == CPUStates::starttime_){
             filestream.close();
-            return stol(value)/hertz;  
+            // 22nd value (llu)
+            return UpTime() - stol(value)/hertz;  
         }
       }
     }
