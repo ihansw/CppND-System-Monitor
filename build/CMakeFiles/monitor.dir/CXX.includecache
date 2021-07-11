@@ -14,16 +14,10 @@ regex
 string
 -
 
-../include/process.h
-vector
+/home/workspace/Cpp-System-Monitor_Evan/src/linux_parser.cpp
+dirent.h
 -
-string
--
-
-/home/workspace/Cpp-System-Monitor_Evan/src/process.cpp
 unistd.h
--
-cctype
 -
 sstream
 -
@@ -33,8 +27,8 @@ vector
 -
 iostream
 -
-process.h
-/home/workspace/Cpp-System-Monitor_Evan/src/process.h
+iomanip
+-
 linux_parser.h
 /home/workspace/Cpp-System-Monitor_Evan/src/linux_parser.h
 
