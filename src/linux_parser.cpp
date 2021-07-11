@@ -120,20 +120,7 @@ long LinuxParser::UpTime() {
   
 }
 
-// TODO: Read and return the number of jiffies for the system
-long LinuxParser::Jiffies() { return 0; }
-
-// TODO: Read and return the number of active jiffies for a PID
-// REMOVE: [[maybe_unused]] once you define the function
-long LinuxParser::ActiveJiffies(int pid[[maybe_unused]]) { return 0; }
-
-// TODO: Read and return the number of active jiffies for the system
-long LinuxParser::ActiveJiffies() { return 0; }
-
-// TODO: Read and return the number of idle jiffies for the system
-long LinuxParser::IdleJiffies() { return 0; }
-
-// TODO: Read and return CPU utilization (For each process)
+// TODO: (DONE) Read and return CPU utilization (For each process)
 vector<string> LinuxParser::CpuUtilization(int pid) { 
   // (1) Get uptime
   string line, uptime;
@@ -248,7 +235,9 @@ string LinuxParser::Ram(int pid) {
     while (std::getline(filestream, line)) {
       std::istringstream linestream(line);
       while (linestream >> key >> value) {
-        if (key == "VmSize:") {
+        // The udacity guideline uses "VmSize" instead of "VmRSS". But, my Udacity reviewer told me that "VmSize" is actually the virtual memory usage,
+        // instead of the physical RAM usage. So, the reviewer suggested me to use "VmRSS" instead!
+        if (key == "VmRSS:") {
           float ram_kb = stof(value);
           float ram_mb = ram_kb / 1024;
           std::stringstream stream;
