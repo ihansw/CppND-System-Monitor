@@ -66,7 +66,7 @@ float Processor::Utilization() {
               int curr_total = curr_idle + curr_non_idle;
               int totald = curr_total - prev_total;
               int idled = curr_idle - prev_idle;
-              cpu_util_percent = (float(totald) - float(idled))/totald; 
+              cpu_util_percent = (static_cast<float>(totald) - static_cast<float>(idled))/totald; 
             
               return cpu_util_percent;
           }

@@ -14,11 +14,11 @@ regex
 string
 -
 
-/home/workspace/Cpp-System-Monitor_Evan/src/linux_parser.cpp
-dirent.h
--
-unistd.h
--
+../include/processor.h
+
+/home/workspace/Cpp-System-Monitor_Evan/src/processor.cpp
+processor.h
+/home/workspace/Cpp-System-Monitor_Evan/src/processor.h
 sstream
 -
 string
@@ -27,7 +27,9 @@ vector
 -
 iostream
 -
-iomanip
+chrono
+-
+thread
 -
 linux_parser.h
 /home/workspace/Cpp-System-Monitor_Evan/src/linux_parser.h

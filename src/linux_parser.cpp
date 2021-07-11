@@ -315,7 +315,8 @@ long LinuxParser::UpTime(int pid) {
         i++;
         if (i == CPUStates::starttime_){
             filestream.close();
-            // 22nd value (llu)
+            // 22nd value (llu, starttime) is the time the process started after the system boot.
+            // Therefore, we need to subtract this value from the system uptime to get the uptime of this process.
             return UpTime() - stol(value)/hertz;  
         }
       }

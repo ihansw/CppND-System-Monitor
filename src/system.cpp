@@ -10,11 +10,7 @@
 #include "system.h"
 #include "linux_parser.h"
 
-using std::set;
-using std::size_t;
-using std::string;
-using std::vector;
-
+using namespace std;
 
 
 // TODO: Return the system's CPU
@@ -32,7 +28,9 @@ vector<Process>& System::Processes() {
   
   for(int i = 0; i < pid_list_size ; i++){
   	Process new_process(pid_list[i]);
-    processes_.push_back(new_process); 
+    // push_back constructs a temporary object which then will need to get moved into the vector v 
+    // whereas emplace_back just forwards the argument and construct it directly in place with no copies or moves needed.
+    processes_.emplace_back(new_process); 
   }
   
   // Sort the list.
